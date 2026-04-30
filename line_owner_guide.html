@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>LINE公式アカウント オーナー向けガイド</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #06C755;
+    --green-light: #e8f9ef;
+    --green-dark: #059144;
+    --text: #222222;
+    --text-sub: #666666;
+    --bg: #f7f8fa;
+    --white: #ffffff;
+    --border: #e0e0e0;
+    --radius: 16px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --orange: #ff6b35;
+    --orange-light: #fff3ee;
+    --blue: #0066cc;
+    --blue-light: #e8f0ff;
+    --red: #e53935;
+    --red-light: #fdecea;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    max-width: 480px;
+    margin: 0 auto;
+    font-size: 14px;
+  }
+
+  /* ヘッダー */
+  .header {
+    background: var(--green);
+    padding: 20px 20px 18px;
+    color: white;
+  }
+  .header-top { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .header-icon {
+    width: 40px; height: 40px;
+    background: white; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .header-title { font-size: 18px; font-weight: 700; line-height: 1.3; }
+  .header-subtitle { font-size: 12px; opacity: 0.88; margin-top: 4px; }
+
+  /* 目次 */
+  .toc {
+    background: var(--white);
+    border-radius: var(--radius);
+    margin: 16px 16px 0;
+    padding: 16px;
+    box-shadow: var(--shadow);
+  }
+  .toc-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-sub);
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+  }
+  .toc-list { list-style: none; }
+  .toc-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .toc-list li:last-child { border-bottom: none; }
+  .toc-num {
+    width: 24px; height: 24px;
+    background: var(--green);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .toc-list a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* セクション */
+  .section {
+    margin: 20px 16px 0;
+  }
+
+  .section-header {
+    background: var(--green);
+    border-radius: 12px 12px 0 0;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-num {
+    width: 28px; height: 28px;
+    background: white;
+    color: var(--green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .section-title { color: white; font-size: 15px; font-weight: 700; }
+
+  .section-body {
+    background: var(--white);
+    border-radius: 0 0 12px 12px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+  }
+
+  /* INFOボックス */
+  .info-box {
+    background: var(--green-light);
+    border-left: 4px solid var(--green);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .info-box strong { color: var(--green-dark); }
+
+  /* 注意ボックス */
+  .warn-box {
+    background: var(--orange-light);
+    border-left: 4px solid var(--orange);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* STEPカード */
+  .step-list { display: flex; flex-direction: column; gap: 14px; }
+
+  .step-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .step-header {
+    background: var(--bg);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .step-badge {
+    background: var(--green);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+  .step-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .step-body {
+    padding: 12px 14px;
+  }
+  .step-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .step-desc:last-child { margin-bottom: 0; }
+
+  /* スクショ */
+  .screenshot {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    display: block;
+    margin-top: 10px;
+  }
+  .screenshot-caption {
+    font-size: 11px;
+    color: var(--text-sub);
+    text-align: center;
+    margin-top: 6px;
+  }
+
+  /* ポイントハイライト */
+  .highlight {
+    background: #fffbec;
+    border: 1px solid #f5c518;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-top: 10px;
+  }
+  .highlight-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #b8860b;
+    margin-bottom: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* メリット・デメリット */
+  .merit-demerit {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .merit-box {
+    background: var(--green-light);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .demerit-box {
+    background: var(--red-light);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .merit-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .demerit-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--red);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .merit-item, .demerit-item {
+    font-size: 13px;
+    line-height: 1.6;
+    padding: 3px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .merit-item::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 700;
+  }
+  .demerit-item::before {
+    content: "!";
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-weight: 700;
+  }
+
+  /* 判断ボックス */
+  .decision-box {
+    background: var(--blue-light);
+    border-left: 4px solid var(--blue);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .decision-box strong { color: var(--blue); }
+
+  /* プランカード */
+  .plan-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .plan-card {
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    position: relative;
+  }
+  .plan-card.recommended {
+    border-color: var(--green);
+  }
+  .plan-rec-badge {
+    position: absolute;
+    top: -10px;
+    left: 14px;
+    background: var(--green);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 20px;
+  }
+  .plan-name { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+  .plan-price { font-size: 20px; font-weight: 700; color: var(--green); }
+  .plan-price span { font-size: 13px; color: var(--text-sub); }
+  .plan-feature { font-size: 12px; color: var(--text-sub); margin-top: 4px; }
+
+  /* 区切り */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 14px 0;
+  }
+
+  /* 最後のメッセージ */
+  .footer-msg {
+    background: var(--green);
+    color: white;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    margin: 20px 16px 32px;
+    font-size: 14px;
+    line-height: 1.7;
+    font-weight: 500;
+  }
+  .footer-msg .emoji { font-size: 24px; display: block; margin-bottom: 6px; }
+
+  /* タグ */
+  .tag {
+    display: inline-block;
+    background: var(--green-light);
+    color: var(--green-dark);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+  }
+  .tag-orange {
+    background: var(--orange-light);
+    color: var(--orange);
+  }
+
+  /* 矢印 */
+  .arrow {
+    text-align: center;
+    color: var(--text-sub);
+    font-size: 20px;
+    margin: 4px 0;
+  }
+
+  /* リンク */
+  a.external-link {
+    color: var(--blue);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--blue);
+    padding-bottom: 1px;
+  }
+  a.external-link:hover { opacity: 0.75; }
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<div class="header">
+  <div class="header-top">
+    <div class="header-icon">📱</div>
+    <div>
+      <div class="header-title">LINE公式アカウント<br>オーナー向けガイド</div>
+    </div>
+  </div>
+  <div class="header-subtitle">アカウント開設から設定まで、ステップごとに案内します</div>
+</div>
+
+<!-- 目次 -->
+<div class="toc">
+  <div class="toc-title">CONTENTS</div>
+  <ul class="toc-list">
+    <li>
+      <div class="toc-num">1</div>
+      <a href="#sec1">LINE Business IDの作成方法</a>
+    </li>
+    <li>
+      <div class="toc-num">2</div>
+      <a href="#sec2">プランのアップグレード方法</a>
+    </li>
+    <li>
+      <div class="toc-num">3</div>
+      <a href="#sec3">認証済みアカウントの取得</a>
+    </li>
+  </ul>
+</div>
+
+<!-- =========================================
+     セクション1: Business ID作成
+     ========================================= -->
+<div class="section" id="sec1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="section-title">LINE Business IDの作成方法</div>
+  </div>
+  <div class="section-body">
+
+    <div class="info-box">
+      LINE公式アカウントの管理には、<strong>「LINE Business ID」</strong>というアカウントが必要です。<br>
+      すでにお持ちの場合はこの手順は不要です。
+    </div>
+
+    <div class="step-list">
+
+      <!-- STEP 1 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-badge">STEP 1</div>
+          <div class="step-label">登録ページにアクセス</div>
+        </div>
+        <div class="step-body">
+          <p class="step-desc">ブラウザで <a href="https://manager.line.biz/" target="_blank" class="external-link">manager.line.biz</a> を開いてください。</p>
+          <p class="step-desc">以下のような画面が表示されます。<br>
+          「アカウントを作成」をタップしてください。</p>
+          <img src="images/sec1_login_form.png" alt="Business IDログイン画面" class="screenshot">
+          <p class="screenshot-caption">▲ この画面が表示されたら「アカウントを作成」をタップ</p>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-badge">STEP 2</div>
+          <div class="step-label">登録方法を選ぶ</div>
+        </div>
+        <div class="step-body">
+          <p class="step-desc">登録方法の選択画面が表示されます。<br>状況に合わせて選んでください。</p>
+          <img src="images/sec1_create_account.png" alt="登録方法選択画面" class="screenshot">
+          <p class="screenshot-caption">▲ 登録方法の選択画面</p>
+          <div class="merit-box" style="margin-top: 12px;">
+            <div class="merit-title">🏢 法人・会社のメールアドレスがある方</div>
+            <div class="merit-item"><strong>「メールアドレスで登録」</strong>がおすすめ</div>
+            <div class="merit-item" style="color: var(--text-sub); font-size: 12px;">プライベートのLINEと分けて管理でき、スタッフへの引き継ぎもしやすい</div>
+          </div>
+          <div class="info-box" style="margin-top: 10px;">
+            <strong>📱 個人のLINEしか持っていない方</strong><br>
+            <strong>「LINEアカウントで登録」</strong>でも問題ありません。<br>
+            普段使っているLINEをそのまま使えるので手軽です。
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-badge">STEP 3</div>
+          <div class="step-label">メールアドレスを入力する</div>
+        </div>
+        <div class="step-body">
+          <p class="step-desc">メールアドレスを入力して「登録用のリンクを送信」をタップしてください。</p>
+          <img src="images/sec1_email_register.png" alt="メールアドレス入力画面" class="screenshot">
+          <p class="screenshot-caption">▲ メールアドレスを入力する画面</p>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-badge">STEP 4</div>
+          <div class="step-label">メールを確認して登録を完了する</div>
+        </div>
+        <div class="step-body">
+          <p class="step-desc">入力したメールアドレス宛に登録リンクが届きます。</p>
+          <p class="step-desc">メール内のリンクをタップし、パスワードを設定すれば登録完了です。</p>
+          <div class="warn-box">
+            ⚠️ メールが届かない場合は、迷惑メールフォルダも確認してください。
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-badge">STEP 5</div>
+          <div class="step-label">担当者にご連絡ください</div>
+        </div>
+        <div class="step-body">
+          <p class="step-desc">登録が完了したら、<strong>村田までご連絡ください。</strong><br>
+          その後の設定作業をサポートします。</p>
+        </div>
+      </div>
+
+    </div><!-- /step-list -->
+  </div><!-- /section-body -->
+</div><!-- /section -->
+
+
+<!-- =========================================
+     セクション2: プランアップグレード
+     ========================================= -->
+<div class="section" id="sec2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="section-title">プランのアップグレード方法</div>
+  </div>
+  <div class="section-body">
+
+    <div class="info-box">
+      初期設定は「コミュニケーションプラン（無料）」です。<br>
+      配信数を増やすには <strong>ライトプラン（月5,000通まで）</strong> へのアップグレードをおすすめします。
+    </div>
+
+    <!-- プラン比較 -->
+    <div class="tag">プラン比較</div>
+    <div class="plan-cards">
+      <div class="plan-card">
+        <div class="plan-name">コミュニケーション（現在）</div>
+        <div class="plan-price">¥0<span>/月</span></div>
+        <div class="plan-feature">無料配信数：200通/月</div>
+      </div>
+      <div class="arrow">↓</div>
+      <div class="plan-card recommended">
+        <div class="plan-rec-badge">おすすめ</div>
+        <div class="plan-name">ライト</div>
+        <div class="plan-price">¥5,000<span>/月（税別）</span></div>
+        <div class="plan-feature">無料配信数：5,000通/月</div>
+      </div>
+    </div>
+
+    <!-- 注意事項 -->
+    <div class="warn-box">
+      <strong>⚠️ アップグレードは月初がおすすめ</strong><br>
+      プランは<strong>月末締め・翌月払い</strong>のため、月の途中でアップグレードすると日割り計算になります。<br>
+      損なく使うには <strong>月の初め（1〜5日頃）</strong> に変更するのがベストです。
+    </div>
+
+    <div class="warn-box" style="border-color: var(--red); background: var(--red-light);">
+      <strong>🚨 配信上限を超えると全配信が止まります</strong><br>
+      無料配信数（コミュニケーション：200通 / ライト：5,000通）を超えると、<strong>メッセージ配信が一切できなくなります。</strong><br>
+      これはリッチメニューのタップ時や、ガチャ・おみくじなどの自動配信も同様です。<br>
+      上限に近づいたら早めにプランの変更またはご相談ください。
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="tag">変更手順</div>
+    <div class="step-list">
+
+      <!-- STEP 1 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-badge">STEP 1</div>
+          <div class="step-label">管理画面にログインして「設定」を開く</div>
+        </div>
+        <div class="step-body">
+          <p class="step-desc"><a href="https://manager.line.biz/" target="_blank" class="external-link">manager.line.biz</a> にログインし、右上の「設定」をタップしてください。</p>
+          <img src="images/sec2_setting.png" alt="設定メニュー" class="screenshot">
+          <p class="screenshot-caption">▲ 設定画面のメニュー一覧</p>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-badge">STEP 2</div>
+          <div class="step-label">「利用と請求」→「月額プラン」をタップ</div>
+        </div>
+        <div class="step-body">
+          <p class="step-desc">左メニューの「利用と請求」を開き、「月額プラン」をタップします。</p>
+          <img src="images/sec2_monthly_plan.png" alt="月額プラン選択画面" class="screenshot">
+          <p class="screenshot-caption">▲ プラン変更ページ。「ライト」の「アップグレード」ボタンをタップ</p>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-badge">STEP 3</div>
+          <div class="step-label">「アップグレード」をタップして支払い設定をする</div>
+        </div>
+        <div class="step-body">
+          <p class="step-desc">「ライト」の「アップグレード」ボタンをタップすると、支払い方法の選択画面が表示されます。</p>
+          <div class="info-box">
+            💳 <strong>お支払い方法について</strong><br>
+            クレジットカード・請求書払いなど複数の選択肢があります。<br>
+            ご都合のよい方法をお選びください。
+          </div>
+          <p class="step-desc">支払い情報を入力して確認画面で「変更する」をタップすれば完了です。</p>
+        </div>
+      </div>
+
+    </div><!-- /step-list -->
+  </div><!-- /section-body -->
+</div><!-- /section -->
+
+
+<!-- =========================================
+     セクション3: 認証済みアカウント
+     ========================================= -->
+<div class="section" id="sec3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="section-title">認証済みアカウントの取得</div>
+  </div>
+  <div class="section-body">
+
+    <div class="info-box">
+      「認証済みアカウント」とは、LINEが企業・店舗を審査して認定したアカウントです。<br>
+      申請するかどうかは任意です。まず<strong>メリット・デメリット</strong>をご確認ください。
+    </div>
+
+    <!-- メリット・デメリット -->
+    <div class="merit-demerit">
+      <div class="merit-box">
+        <div class="merit-title">✅ メリット</div>
+        <div class="merit-item">LINE検索で表示されやすくなる</div>
+        <div class="merit-item">認証バッジがつき、信頼感が上がる</div>
+        <div class="merit-item">お客さんが「本物のアカウント」だと分かる</div>
+        <div class="merit-item"><strong>請求書払いが利用できるようになる</strong>（未認証はクレジットカードのみ）</div>
+      </div>
+      <div class="demerit-box">
+        <div class="demerit-title">⚠️ デメリット・注意点</div>
+        <div class="demerit-item">店名を変更する際に再審査が必要になる</div>
+        <div class="demerit-item">申請に法人番号・登記情報が必要</div>
+      </div>
+    </div>
+
+    <div class="decision-box">
+      <strong>📋 申請はオーナー様の判断で</strong><br>
+      認証の取得は任意です。必要性を感じた際にいつでも申請できます。<br>
+      迷った場合はご相談ください。
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="tag">申請手順</div>
+    <div class="step-list">
+
+      <!-- STEP 1 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-badge">STEP 1</div>
+          <div class="step-label">管理画面の「設定」→「アカウント設定」を開く</div>
+        </div>
+        <div class="step-body">
+          <p class="step-desc"><a href="https://manager.line.biz/" target="_blank" class="external-link">manager.line.biz</a> にログインし、「設定」→「アカウント設定」を開きます。</p>
+          <img src="images/sec3_account_setting.png" alt="アカウント設定画面" class="screenshot">
+          <p class="screenshot-caption">▲「アカウント情報」欄に「認証ステータス」があります</p>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-badge">STEP 2</div>
+          <div class="step-label">「アカウント認証をリクエスト」をタップ</div>
+        </div>
+        <div class="step-body">
+          <p class="step-desc">「アカウント情報」の「認証ステータス」欄にある<br>
+          <strong>「アカウント認証をリクエスト」</strong>ボタンをタップします。</p>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-badge">STEP 3</div>
+          <div class="step-label">申請フォームを確認して進む</div>
+        </div>
+        <div class="step-body">
+          <p class="step-desc">認証申請の流れと注意事項が表示されます。内容を確認してください。</p>
+          <img src="images/sec3_verified_request.png" alt="認証申請フロー説明ページ" class="screenshot">
+          <p class="screenshot-caption">▲ 審査の流れとポイントが案内されます</p>
+          <div class="highlight" style="margin-top:10px;">
+            <div class="highlight-label">📌 審査のポイント</div>
+            ・申請情報を確認できるWebサイトが必要です<br>
+            ・分かりやすいアカウント名を設定してください<br>
+            ・連絡先（電話番号またはメール）を用意してください
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-badge">STEP 4</div>
+          <div class="step-label">「アカウント認証を申請する」ボタンをタップ</div>
+        </div>
+        <div class="step-body">
+          <p class="step-desc">ページ下部の<strong>「アカウント認証を申請する」</strong>ボタンをタップし、必要情報を入力して申請を完了してください。</p>
+          <div class="info-box">
+            審査には数日〜数週間かかる場合があります。審査結果はメールでお知らせが届きます。
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /step-list -->
+  </div><!-- /section-body -->
+</div><!-- /section -->
+
+
+<!-- フッターメッセージ -->
+<div class="footer-msg">
+  <span class="emoji">💬</span>
+  ご不明な点はお気軽にご相談ください。<br>
+  一緒に進めていきましょう！
+</div>
+
+</body>
+</html>
